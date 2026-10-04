@@ -1,8 +1,8 @@
-src/Main.java
-src/Device.java
-src/TvDevice.java
-src/RadioDevice.java
-src/ProjectorDevice.java
-src/Remote.java
-src/BasicRemote.java
-src/QuietRemote.java
+src/main/java/Device.java
+src/main/java/TvDevice.java
+src/main/java/RadioDevice.java
+src/main/java/ProjectorDevice.java
+src/main/java/Remote.java
+src/main/java/BasicRemote.java
+src/main/java/QuietRemote.java
+src/main/java/Main.java
