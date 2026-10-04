@@ -51,6 +51,22 @@ public class Main {
         System.out.printf("T5 %s sameObject=%b | stateUnchanged=%b\n", pass5 ? "PASS" : "FAIL", sameObject, stateUnchanged);
         if (pass5) passed++;
 
+        // T6: A1 with I3
+        Device proj1 = new ProjectorDevice();
+        Remote basicProj = new BasicRemote("R4", proj1);
+        String res6 = basicProj.execute();
+        boolean pass6 = res6.contains("Projector") && res6.contains("30");
+        System.out.printf("T6 %s | BasicRemote + ProjectorDevice | result=%s\n", pass6 ? "PASS" : "FAIL", res6);
+        if (pass6) passed++;
+
+        // T7: A2 with I3
+        Device proj2 = new ProjectorDevice();
+        Remote quietProj = new QuietRemote("Q3", proj2);
+        String res7 = quietProj.execute();
+        boolean pass7 = res7.contains("Projector") && res7.contains("5");
+        System.out.printf("T7 %s | QuietRemote + ProjectorDevice | result=%s\n", pass7 ? "PASS" : "FAIL", res7);
+        if (pass7) passed++;
+
         System.out.printf("SUMMARY: %d/%d PASS\n", passed, totalChecks);
     }
 }
