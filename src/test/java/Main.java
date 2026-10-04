@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         int passed = 0;
-        int totalChecks = 4;
+        int totalChecks = 5;
 
         // T1: A1 with I1
         Device tv1 = new TvDevice();
@@ -34,6 +34,22 @@ public class Main {
         boolean pass4 = res4.contains("Radio") && res4.contains("5");
         System.out.printf("T4 %s | QuietRemote + RadioDevice | result=%s\n", pass4 ? "PASS" : "FAIL", res4);
         if (pass4) passed++;
+
+        // T5: Runtime switch
+        Device tv3 = new TvDevice();
+        Remote switchRemote = new BasicRemote("R3", tv3);
+        Remote originalRef = switchRemote;
+        String before = switchRemote.execute();
+
+        Device radio3 = new RadioDevice();
+        switchRemote.setImplementation(radio3);
+        String after = switchRemote.execute();
+
+        boolean sameObject = (originalRef == switchRemote);
+        boolean stateUnchanged = switchRemote.getId().equals("R3");
+        boolean pass5 = sameObject && stateUnchanged && before.contains("TV") && after.contains("Radio");
+        System.out.printf("T5 %s sameObject=%b | stateUnchanged=%b\n", pass5 ? "PASS" : "FAIL", sameObject, stateUnchanged);
+        if (pass5) passed++;
 
         System.out.printf("SUMMARY: %d/%d PASS\n", passed, totalChecks);
     }
