@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         int passed = 0;
-        int totalChecks = 5;
+        int totalChecks = 7;
 
         // T1: A1 with I1
         Device tv1 = new TvDevice();
